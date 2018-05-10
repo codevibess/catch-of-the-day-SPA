@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './Header'
 
 class StorePicker extends React.Component {
     render() {
