@@ -6,6 +6,7 @@ import sampleFishes from "../sample-fishes";
 import Fish from "./Fish";
 
 class App extends React.Component {
+  
   state = {
     fishes: {},
     order: {}
@@ -27,7 +28,7 @@ class App extends React.Component {
     this.setState({ fishes: sampleFishes });
   };
 
-  addToOrder = (key) => {
+  addToOrder = key => {
     //TAke a cope of state
     const order = { ...this.state.order };
     //add to order or update order
@@ -43,11 +44,16 @@ class App extends React.Component {
           <Header tagline="fresh seafood market" />
           <ul className="fishes">
             {Object.keys(this.state.fishes).map(key => (
-              <Fish key={key} index={key} details={this.state.fishes[key]} addToOrder={this.addToOrder} />
+              <Fish
+                key={key}
+                index={key}
+                details={this.state.fishes[key]}
+                addToOrder={this.addToOrder}
+              />
             ))}
           </ul>
         </div>
-        <Order />
+        <Order fishes={this.state.fishes} order={this.state.order}/>
         <Inventory
           addFish={this.addFish}
           loadSampleFishes={this.loadSampleFishes}
